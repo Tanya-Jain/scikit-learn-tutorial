@@ -69,7 +69,7 @@ The files themselves are not loaded in memory yet::
 
 Let's print the first 2 lines of the first file::
 
-  >>> print "".join(open(twenty_train.filenames[0]).readlines()[:2]).strip()
+  >>> print("".join(open(twenty_train.filenames[0]).readlines()[:2]).strip())
   From: clipper@mccarthy.csd.uwo.ca (Khun Yee Fung)
   Subject: Re: looking for circle algorithm faster than Bresenhams
 
@@ -89,7 +89,7 @@ integer id of each sample is stored in the ``target`` attribute::
 It is possible to get back the category names as follows::
 
   >>> for t in twenty_train.target[:10]:
-  ...     print twenty_train.target_names[t]
+  ...     print(twenty_train.target_names[t])
   ...
   comp.graphics
   alt.atheism
@@ -155,7 +155,7 @@ accents and converts to lowercase on roman languages::
 
   >>> from scikits.learn.feature_extraction.text import RomanPreprocessor
   >>> text = u"J'ai bien mang\xe9."
-  >>> print RomanPreprocessor().preprocess(text)
+  >>> print(RomanPreprocessor().preprocess(text))
   j'ai bien mange.
 
 The second one is a utility that splits the text into words after
@@ -264,7 +264,7 @@ on the transformers, since they have already been fit to the training set::
   >>> predicted = clf.predict(X_new_tfidf)
 
   >>> for doc, category in zip(docs_new, predicted):
-  ...     print '%r => %s' % (doc, twenty_train.target_names[category])
+  ...     print('%r => %s' % (doc, twenty_train.target_names[category]))
   ...
   'God is love' => soc.religion.christian
   'OpenGL on the GPU is fast' => comp.graphics
@@ -323,9 +323,9 @@ classifier object into our pipeline::
 analysis of the results::
 
   >>> from scikits.learn import metrics
-  >>> print metrics.classification_report(
+  >>> print(metrics.classification_report(
   ...     twenty_test.target, predicted,
-  ...     target_names=twenty_test.target_names)
+  ...     target_names=twenty_test.target_names))
   ...
 
                           precision    recall  f1-score   support
@@ -391,7 +391,7 @@ The best model found during fit is available as a special attribute::
 
   >>> best_parameters = gs_clf.best_estimator._get_params()
   >>> for param_name in sorted(parameters.keys()):
-  ...     print "%s: %r" % (param_name, best_parameters[param_name])
+  ...     print("%s: %r" % (param_name, best_parameters[param_name]))
   ...
   clf__C: 100
   tfidf__use_idf: True
